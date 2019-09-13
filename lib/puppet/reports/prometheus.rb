@@ -69,7 +69,7 @@ Puppet::Reports.register_report(:prometheus) do
 # TYPE puppet_report_time gauge
 EOS
 
-    File.open(filename, 'w') do |file|
+    File.open(filename, 'w', 0664) do |file|
       file.write(definitons)
       if File.exist?(yaml_filename)
         file.write("# Old metrics\n")
